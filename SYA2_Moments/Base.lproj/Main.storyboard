@@ -636,7 +636,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="CwR-72-dH1">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="CwR-72-dH1" customClass="ChatTableViewCell" customModule="SYA2_Moments" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CwR-72-dH1" id="EgC-By-6RO">
@@ -676,6 +676,11 @@
                                         <constraint firstItem="m2B-6A-9S1" firstAttribute="top" secondItem="EgC-By-6RO" secondAttribute="topMargin" id="k4b-Ja-22A"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="featuredImageView" destination="xKS-B0-YXE" id="rTR-CZ-n5A"/>
+                                    <outlet property="lastMessage" destination="0u9-JG-NjF" id="Xix-tJ-huw"/>
+                                    <outlet property="titleLabel" destination="m2B-6A-9S1" id="um4-s2-H6A"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -1519,7 +1524,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="nwp-TG-Wvv">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="nwp-TG-Wvv" customClass="ContactTableViewCell" customModule="SYA2_Moments" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nwp-TG-Wvv" id="HV0-7c-1Ry">
@@ -1566,6 +1571,12 @@
                                         <constraint firstItem="Ewh-zm-rCU" firstAttribute="trailing" secondItem="HV0-7c-1Ry" secondAttribute="trailingMargin" id="xCq-mQ-nfY"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="checkBoxImageView" destination="Ewh-zm-rCU" id="5j7-4d-j0J"/>
+                                    <outlet property="displayNameLabel" destination="mot-OB-E9F" id="ivl-t6-bDH"/>
+                                    <outlet property="emailTextLabel" destination="gZk-SS-HPQ" id="fc1-9o-gI5"/>
+                                    <outlet property="profileImageView" destination="r7K-8I-yVu" id="5c9-SN-79z"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
