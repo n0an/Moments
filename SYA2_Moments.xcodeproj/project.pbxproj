@@ -31,6 +31,7 @@
 		1884E5811DD5094400994BC5 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884E5801DD5094400994BC5 /* ProfileViewController.swift */; };
 		1884E5841DD5D6B900994BC5 /* DummyPostComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884E5831DD5D6B900994BC5 /* DummyPostComposerViewController.swift */; };
 		1884E5871DD5D6DE00994BC5 /* PostComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884E5861DD5D6DE00994BC5 /* PostComposerViewController.swift */; };
+		188BA1421E2FEBCA00D4CA07 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BA1411E2FEBCA00D4CA07 /* Chat.swift */; };
 		427DB4159B1241156B8CA38A /* Pods_SYA2_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC8AA868D913EA3D4DB5C92 /* Pods_SYA2_Moments.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 		1884E5801DD5094400994BC5 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		1884E5831DD5D6B900994BC5 /* DummyPostComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyPostComposerViewController.swift; sourceTree = "<group>"; };
 		1884E5861DD5D6DE00994BC5 /* PostComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerViewController.swift; sourceTree = "<group>"; };
+		188BA1411E2FEBCA00D4CA07 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		583259011020FD130EC7392A /* Pods-SYA2_Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SYA2_Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-SYA2_Moments/Pods-SYA2_Moments.release.xcconfig"; sourceTree = "<group>"; };
 		9FC8AA868D913EA3D4DB5C92 /* Pods_SYA2_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SYA2_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -126,9 +128,10 @@
 				18269BDA1DD21F530065D028 /* Model */,
 				18269BC21DD212400065D028 /* AppDelegate.swift */,
 				18269BC61DD212400065D028 /* Main.storyboard */,
-				1884E5821DD5094D00994BC5 /* Profile Tab */,
+				1884E57C1DD5028A00994BC5 /* Newsfeed Tab */,
 				1884E5851DD5D6BE00994BC5 /* Post Composer Tab */,
-				1884E57C1DD5028A00994BC5 /* Newsfeed */,
+				188BA1401E2FEBB100D4CA07 /* Messenger */,
+				1884E5821DD5094D00994BC5 /* Profile Tab */,
 				1884E57B1DD5027500994BC5 /* User Authentication */,
 				1884E57D1DD5029200994BC5 /* Helper Classes */,
 				18269BCB1DD212400065D028 /* LaunchScreen.storyboard */,
@@ -141,9 +144,9 @@
 		18269BDA1DD21F530065D028 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18269BD81DD219DE0065D028 /* FirebaseReference.swift */,
 				18269BDB1DD21F5F0065D028 /* User.swift */,
 				18269BDD1DD224DB0065D028 /* FIRImage.swift */,
-				18269BD81DD219DE0065D028 /* FirebaseReference.swift */,
 				154919521DD5B81E002E16BA /* Media.swift */,
 				18200B361DDDE78C000B0075 /* Comment.swift */,
 			);
@@ -160,13 +163,13 @@
 			name = "User Authentication";
 			sourceTree = "<group>";
 		};
-		1884E57C1DD5028A00994BC5 /* Newsfeed */ = {
+		1884E57C1DD5028A00994BC5 /* Newsfeed Tab */ = {
 			isa = PBXGroup;
 			children = (
 				15ABA8761DDE13AD00FE7B57 /* Controllers */,
 				15ABA8751DDE13A400FE7B57 /* Views */,
 			);
-			name = Newsfeed;
+			name = "Newsfeed Tab";
 			sourceTree = "<group>";
 		};
 		1884E57D1DD5029200994BC5 /* Helper Classes */ = {
@@ -192,6 +195,14 @@
 				1884E5861DD5D6DE00994BC5 /* PostComposerViewController.swift */,
 			);
 			name = "Post Composer Tab";
+			sourceTree = "<group>";
+		};
+		188BA1401E2FEBB100D4CA07 /* Messenger */ = {
+			isa = PBXGroup;
+			children = (
+				188BA1411E2FEBCA00D4CA07 /* Chat.swift */,
+			);
+			name = Messenger;
 			sourceTree = "<group>";
 		};
 		6267C60C7BB91B2FE63DDFC7 /* Pods */ = {
@@ -355,6 +366,7 @@
 				18269BDC1DD21F5F0065D028 /* User.swift in Sources */,
 				18269BE81DD25D590065D028 /* ImagePickerHelper.swift in Sources */,
 				15ABA8741DDDCC4600FE7B57 /* CommentTableViewCell.swift in Sources */,
+				188BA1421E2FEBCA00D4CA07 /* Chat.swift in Sources */,
 				18269BD91DD219DE0065D028 /* FirebaseReference.swift in Sources */,
 				18269BDE1DD224DB0065D028 /* FIRImage.swift in Sources */,
 				15ABA8781DDE13DB00FE7B57 /* MediaDetailTableViewController.swift in Sources */,

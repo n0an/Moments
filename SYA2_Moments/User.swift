@@ -21,8 +21,7 @@ class User {
     var follows: [User]
     var followedBy: [User]
     
-    // MARK: - Initializers
-    
+    // MARK: - INITIALIZERS
     init(uid: String, username: String, fullName: String, bio: String, website: String, follows: [User], followedBy: [User], profileImage: UIImage?) {
         
         self.uid = uid
@@ -72,6 +71,7 @@ class User {
         
     }
     
+    // MARK: - HELPER METHODS
     func save(completion: @escaping (Error?) -> Void) {
         // 1
         let ref = DatabaseReference.users(uid: uid).reference()
