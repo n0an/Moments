@@ -60,7 +60,7 @@ class Chat {
         self.featuredImageUID = dictionary["featuredImageUID"] as! String
         
         
-        // users
+        // initializing users
         self.users = []
         
         if let usersDict = dictionary["users"] as? [String: Any] {
@@ -71,7 +71,7 @@ class Chat {
             }
         }
         
-        // messageIds
+        // initializing messageIds
         self.messageIds = []
         
         if let messageIdsDict = dictionary["messageIds"] as? [String: Any] {
@@ -90,19 +90,18 @@ class Chat {
         
         self.ref.setValue(toDictionary())
         
+        // saving users
         let usersRef = self.ref.child("users")
         
         for user in self.users {
             usersRef.child(user.uid).setValue(user.toDictionary())
-            
         }
         
+        // saving messages
         let messageIDsRef = ref.child("messageIds")
         
         for messageId in self.messageIds {
-            
             messageIDsRef.childByAutoId().setValue(messageId)
-            
         }
         
     }
@@ -139,6 +138,22 @@ extension Chat {
         }
         
     }
+    
+    
+    func send(message: Message) {
+        
+        self.messageIds.append(message.uid)
+        
+        self.lastMessage = message.text
+        
+        self.lastUpdate = Date().timeIntervalSince1970
+        
+        // Partially saving when sending message (to not upload over all messages again)
+        self.ref.child("lastUpdate").setValue(self.lastUpdate)
+        self.ref.child("lastMessage").setValue(self.lastMessage)
+        self.ref.child("messageIds").childByAutoId().setValue(message.uid)
+    }
+    
     
 }
 

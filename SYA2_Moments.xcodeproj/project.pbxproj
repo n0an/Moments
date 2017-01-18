@@ -32,6 +32,7 @@
 		1884E5841DD5D6B900994BC5 /* DummyPostComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884E5831DD5D6B900994BC5 /* DummyPostComposerViewController.swift */; };
 		1884E5871DD5D6DE00994BC5 /* PostComposerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1884E5861DD5D6DE00994BC5 /* PostComposerViewController.swift */; };
 		188BA1421E2FEBCA00D4CA07 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BA1411E2FEBCA00D4CA07 /* Chat.swift */; };
+		188BA1441E2FF55900D4CA07 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BA1431E2FF55900D4CA07 /* Message.swift */; };
 		427DB4159B1241156B8CA38A /* Pods_SYA2_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC8AA868D913EA3D4DB5C92 /* Pods_SYA2_Moments.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		1884E5831DD5D6B900994BC5 /* DummyPostComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyPostComposerViewController.swift; sourceTree = "<group>"; };
 		1884E5861DD5D6DE00994BC5 /* PostComposerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostComposerViewController.swift; sourceTree = "<group>"; };
 		188BA1411E2FEBCA00D4CA07 /* Chat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		188BA1431E2FF55900D4CA07 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		583259011020FD130EC7392A /* Pods-SYA2_Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SYA2_Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-SYA2_Moments/Pods-SYA2_Moments.release.xcconfig"; sourceTree = "<group>"; };
 		9FC8AA868D913EA3D4DB5C92 /* Pods_SYA2_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SYA2_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -201,6 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				188BA1411E2FEBCA00D4CA07 /* Chat.swift */,
+				188BA1431E2FF55900D4CA07 /* Message.swift */,
 			);
 			name = Messenger;
 			sourceTree = "<group>";
@@ -359,6 +362,7 @@
 				18269BE21DD257300065D028 /* NewsfeedTableViewController.swift in Sources */,
 				15ABA8721DDDC0BC00FE7B57 /* MediaTableViewCell.swift in Sources */,
 				18200B371DDDE78C000B0075 /* Comment.swift in Sources */,
+				188BA1441E2FF55900D4CA07 /* Message.swift in Sources */,
 				1884E5871DD5D6DE00994BC5 /* PostComposerViewController.swift in Sources */,
 				15ABA8701DDDB17100FE7B57 /* MediaHeaderCell.swift in Sources */,
 				1884E5811DD5094400994BC5 /* ProfileViewController.swift in Sources */,
