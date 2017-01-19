@@ -84,9 +84,11 @@ class MediaHeaderCell: UITableViewCell {
     @IBAction func followDidTap() {
     
         currentUser.follow(user: media.createdBy)
+        media.createdBy.isFollowedBy(user: currentUser)
         
-        updateUI()
-    
+        followButton.isHidden = true
+        // TODO: Use code from Duc here, add media.createdBy.isFollowedBy(currentUser)
+
     
     }
 

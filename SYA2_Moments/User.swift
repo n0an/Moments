@@ -136,6 +136,12 @@ extension User {
         ref.setValue(user.toDictionary())
     }
     
+    // TODO: Add isFollowedBy from Duc source code
+    func isFollowedBy(user: User) {
+        self.followedBy.append(user)
+        let ref = DatabaseReference.users(uid: uid).reference().child("followedBy/\(user.uid)")
+        ref.setValue(user.toDictionary())
+    }
 }
 
 
