@@ -1594,6 +1594,7 @@
                     <connections>
                         <outlet property="contactsPickerField" destination="HYF-Tm-LhH" id="KVZ-mt-Gnr"/>
                         <outlet property="nextButton" destination="TxT-Ms-td1" id="Dob-q3-ffq"/>
+                        <segue destination="AwW-ZF-7sk" kind="show" identifier="ShowChatViewController" id="XKr-vI-Sg4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mWl-4B-uq1" userLabel="First Responder" sceneMemberID="firstResponder"/>

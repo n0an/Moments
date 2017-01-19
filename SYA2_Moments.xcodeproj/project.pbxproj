@@ -36,6 +36,7 @@
 		188BA1461E2FFD4C00D4CA07 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BA1451E2FFD4C00D4CA07 /* ChatTableViewCell.swift */; };
 		188BA1481E2FFEE700D4CA07 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BA1471E2FFEE700D4CA07 /* ContactTableViewCell.swift */; };
 		188BA14A1E3140A000D4CA07 /* ContactsPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BA1491E3140A000D4CA07 /* ContactsPickerViewController.swift */; };
+		188BA14C1E31542F00D4CA07 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188BA14B1E31542F00D4CA07 /* ChatViewController.swift */; };
 		427DB4159B1241156B8CA38A /* Pods_SYA2_Moments.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FC8AA868D913EA3D4DB5C92 /* Pods_SYA2_Moments.framework */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,7 @@
 		188BA1451E2FFD4C00D4CA07 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
 		188BA1471E2FFEE700D4CA07 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
 		188BA1491E3140A000D4CA07 /* ContactsPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsPickerViewController.swift; sourceTree = "<group>"; };
+		188BA14B1E31542F00D4CA07 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		583259011020FD130EC7392A /* Pods-SYA2_Moments.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SYA2_Moments.release.xcconfig"; path = "Pods/Target Support Files/Pods-SYA2_Moments/Pods-SYA2_Moments.release.xcconfig"; sourceTree = "<group>"; };
 		9FC8AA868D913EA3D4DB5C92 /* Pods_SYA2_Moments.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SYA2_Moments.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -213,6 +215,7 @@
 				188BA1451E2FFD4C00D4CA07 /* ChatTableViewCell.swift */,
 				188BA1471E2FFEE700D4CA07 /* ContactTableViewCell.swift */,
 				188BA1491E3140A000D4CA07 /* ContactsPickerViewController.swift */,
+				188BA14B1E31542F00D4CA07 /* ChatViewController.swift */,
 			);
 			name = Messenger;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				15ABA8741DDDCC4600FE7B57 /* CommentTableViewCell.swift in Sources */,
 				188BA1481E2FFEE700D4CA07 /* ContactTableViewCell.swift in Sources */,
 				188BA1421E2FEBCA00D4CA07 /* Chat.swift in Sources */,
+				188BA14C1E31542F00D4CA07 /* ChatViewController.swift in Sources */,
 				18269BD91DD219DE0065D028 /* FirebaseReference.swift in Sources */,
 				18269BDE1DD224DB0065D028 /* FIRImage.swift in Sources */,
 				15ABA8781DDE13DB00FE7B57 /* MediaDetailTableViewController.swift in Sources */,

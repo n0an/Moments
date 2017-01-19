@@ -15,6 +15,7 @@ class ContactsPickerViewController: UITableViewController {
     
     struct Storyboard {
         static let contactCell = "ContactCell"
+        static let segueShowChatViewController = "ShowChatViewController"
     }
 
     // MARK: - OUTLETS
@@ -95,8 +96,31 @@ class ContactsPickerViewController: UITableViewController {
     }
     
     
-    
-    
+    // FIND IF THERE IS THE EXISTING CHAT WITH ALL THE PARTICIPANTS
+    func findChat(among chatAccounts: [User]) -> Chat? {
+        
+        guard chats != nil else {
+            return nil
+        }
+        
+        for chat in chats {
+            
+            var resultsArray = [Bool]()
+            
+            for account in chatAccounts {
+                
+                let result = chat.users.contains(account)
+                resultsArray.append(result)
+            }
+            
+            if !resultsArray.contains(false) {
+                return chat
+            }
+            
+        }
+        
+        
+    }
     
     
     
@@ -111,6 +135,36 @@ class ContactsPickerViewController: UITableViewController {
         self.selectedAccounts.remove(at: index)
         self.contactsPickerField.reloadData()
     }
+    
+    // MARK: - Chat
+    @IBAction func nextDidTap() {
+        
+        var chatAccounts = selectedAccounts
+        
+        chatAccounts.append(currentUser)
+        
+        if let chat = findChat(among: chatAccounts) {
+            self.performSegue(withIdentifier: Storyboard.segueShowChatViewController, sender: chat)
+        } else {
+            var title = ""
+            
+            for account in chatAccounts {
+                
+                if title == "" {
+                    title += "\(account.fullName)"
+                } else {
+                    title += ", \(account.fullName)"
+                }
+                
+            }
+            
+            let newChat = Chat(users: chatAccounts, title: title, featuredImageUID: (chatAccounts.first?.uid)!)
+            self.performSegue(withIdentifier: Storyboard.segueShowChatViewController, sender: newChat)
+        }
+        
+    }
+    
+    
     
     
     // MARK: - UITableViewDataSource
