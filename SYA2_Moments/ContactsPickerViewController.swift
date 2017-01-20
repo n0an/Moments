@@ -119,11 +119,8 @@ class ContactsPickerViewController: UITableViewController {
             
         }
         
-        
+        return nil
     }
-    
-    
-    
     
     
     func addRecipient(account: User) {
@@ -163,6 +160,33 @@ class ContactsPickerViewController: UITableViewController {
         }
         
     }
+    
+    
+    // MARK: - NAVIGATION
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == Storyboard.segueShowChatViewController {
+            
+            let chat = sender as! Chat
+            
+            let chatVC = segue.destination as! ChatViewController
+            
+            chatVC.senderId = currentUser.uid
+            chatVC.senderDisplayName = currentUser.fullName
+            
+            chatVC.chat = chat
+            chatVC.currentUser = self.currentUser
+            chatVC.hidesBottomBarWhenPushed = true
+            
+            
+            
+            
+        }
+        
+        
+    }
+    
+    
     
     
     
