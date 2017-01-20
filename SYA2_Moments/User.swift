@@ -91,15 +91,14 @@ class User {
         
         if let profileImage = self.profileImage {
             let firImage = FIRImage(image: profileImage)
+            
             firImage.saveProfileImage(self.uid, { (error) in
                 
                 completion(error)
                 
             })
         }
-        
     }
-    
     
     
     func toDictionary() -> [String: Any] {
@@ -114,6 +113,7 @@ class User {
 }
 
 
+// MARK: - SHARE, DOWNLOAD AVATAR, FOLLOW METHODS
 extension User {
     
     func share(newMedia: Media) {
@@ -136,13 +136,41 @@ extension User {
         ref.setValue(user.toDictionary())
     }
     
-    // TODO: Add isFollowedBy from Duc source code
+    
     func isFollowedBy(user: User) {
         self.followedBy.append(user)
         let ref = DatabaseReference.users(uid: uid).reference().child("followedBy/\(user.uid)")
         ref.setValue(user.toDictionary())
     }
 }
+
+// MARK: - CHAT METHODS
+
+extension User {
+    
+    func saveNewChat(_ chat: Chat) {
+        
+        DatabaseReference.users(uid: self.uid).reference().child("chatIds/\(chat.uid)").setValue(true)
+        
+    }
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // COMPARE METHOD (FOR "CONTAINS" FEATURE) - for checking if array constains current User

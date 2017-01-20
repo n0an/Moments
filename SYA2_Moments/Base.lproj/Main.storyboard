@@ -1588,6 +1588,9 @@
                     <navigationItem key="navigationItem" title="Messages" id="6Nb-BE-vFr">
                         <barButtonItem key="rightBarButtonItem" title="Next" id="TxT-Ms-td1">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="nextDidTap" destination="WTj-8I-paO" id="YWc-ig-GP9"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
@@ -1601,10 +1604,10 @@
             </objects>
             <point key="canvasLocation" x="2070" y="1218"/>
         </scene>
-        <!--View Controller-->
+        <!--Chat View Controller-->
         <scene sceneID="5qA-MM-go5">
             <objects>
-                <viewController id="AwW-ZF-7sk" sceneMemberID="viewController">
+                <viewController id="AwW-ZF-7sk" customClass="ChatViewController" customModule="SYA2_Moments" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vS9-hB-8MT"/>
                         <viewControllerLayoutGuide type="bottom" id="NFZ-au-g6d"/>

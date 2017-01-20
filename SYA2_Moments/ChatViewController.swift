@@ -10,6 +10,15 @@ import UIKit
 import JSQMessagesViewController
 import Firebase
 
+/*
+ 
+ 1 - Send a text message - locally
+ 2 - Save message to Firebase
+ 3 - Download and observe messages
+ 4 - Fetch messages to ChatVC
+ 
+ */
+
 class ChatViewController: JSQMessagesViewController {
     
     // MARK: - PROPERTIES
@@ -36,6 +45,8 @@ class ChatViewController: JSQMessagesViewController {
         
         let backButton = UIBarButtonItem(image: UIImage(named: "icon-back"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(actionBackButtonTapped))
         self.navigationItem.leftBarButtonItem = backButton
+        
+        self.observeMessages()
     }
     
     
@@ -61,6 +72,40 @@ class ChatViewController: JSQMessagesViewController {
     
     
     // MARK: - HELPER METHODS
+    
+    private func observeMessages() {
+        
+        let chatMessageIdsRef = chat.ref.child("messageIds")
+        chatMessageIdsRef.observe(FIRDataEventType.childAdded, with: { (snapshot) in
+            
+            let messageId = snapshot.value as! String
+            
+            DatabaseReference.messages.reference().child(messageId).observe(.value, with: { (snapshot) in
+                
+                let message = Message(dictionary: snapshot.value as! [String: Any])
+                
+                self.messages.append(message)
+                
+                self.addMessages(message)
+                
+                self.finishReceivingMessage()
+                
+            })
+            
+        })
+        
+    }
+    
+    func addMessages(_ message: Message) {
+        
+        if message.type == MessageType.text {
+            let jsqMessage = JSQMessage(senderId: message.senderUID, displayName: message.senderDisplayName, text: message.text)
+            
+            jsqMessages.append(jsqMessage!)
+        }
+        
+    }
+    
     
     
     // MARK: - ACTIONS
@@ -131,8 +176,37 @@ extension ChatViewController {
     
 }
 
-
-
+// MARK: - SEND MESSAGES
+extension ChatViewController {
+    
+    override func didPressSend(_ button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: Date!) {
+        
+        // If this is the first message in the chat - SAVE NEW CHAT
+        
+        if self.chat.messageIds.count == 0 {
+            self.chat.save()
+            
+            for account in chat.users {
+                account.saveNewChat(chat)
+            }
+            
+        }
+        
+        let newMessage = Message(senderUID: currentUser.uid, senderDisplayName: currentUser.fullName, type: MessageType.text, text: text)
+        
+        newMessage.save()
+        
+        chat.send(message: newMessage)
+        
+        JSQSystemSoundPlayer.jsq_playMessageSentSound()
+        
+        finishSendingMessage()
+    }
+    
+    
+    
+    
+}
 
 
 
