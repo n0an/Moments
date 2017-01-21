@@ -10,13 +10,16 @@ import UIKit
 
 class PostComposerViewController: UITableViewController {
 
+    // MARK: - OUTLETS
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
     @IBOutlet weak var shareBarButtonItem: UIBarButtonItem!
     
+    // MARK: - PROPERTIES
     var image: UIImage!
     var imagePickerSourceType: UIImagePickerControllerSourceType!
 
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,8 +33,18 @@ class PostComposerViewController: UITableViewController {
         tableView.allowsSelection = false
         
     }
+    
+    // MARK: - HELPER METHODS
+    func showAlert(title: String, message: String, buttonTitle: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: buttonTitle, style: .default, handler: nil)
+        alertVC.addAction(action)
+        present(alertVC, animated: true, completion: nil)
+    }
+
 
     
+    // MARK: - ACTIONS
     @IBAction func cancelDidTap() {
         
         self.image = nil
@@ -43,7 +56,6 @@ class PostComposerViewController: UITableViewController {
     }
     
     
-
     @IBAction func shareDidTap(_ sender: Any) {
         
         if let image = image, let caption = textView.text {
@@ -72,17 +84,11 @@ class PostComposerViewController: UITableViewController {
     }
     
     
-    func showAlert(title: String, message: String, buttonTitle: String) {
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: buttonTitle, style: .default, handler: nil)
-        alertVC.addAction(action)
-        present(alertVC, animated: true, completion: nil)
-    }
-    
-    
     
 }
 
+
+// MARK: - UITextViewDelegate
 extension PostComposerViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {

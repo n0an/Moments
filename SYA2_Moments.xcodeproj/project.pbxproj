@@ -136,16 +136,16 @@
 		18269BC11DD212400065D028 /* SYA2_Moments */ = {
 			isa = PBXGroup;
 			children = (
-				1884E57A1DD3B61F00994BC5 /* SYA2_Moments.entitlements */,
-				18269BDA1DD21F530065D028 /* Model */,
 				18269BC21DD212400065D028 /* AppDelegate.swift */,
-				18269BC61DD212400065D028 /* Main.storyboard */,
+				18269BDA1DD21F530065D028 /* Model */,
+				1884E57B1DD5027500994BC5 /* User Authentication */,
 				1884E57C1DD5028A00994BC5 /* Newsfeed Tab */,
 				1884E5851DD5D6BE00994BC5 /* Post Composer Tab */,
 				188BA1401E2FEBB100D4CA07 /* Messenger */,
 				1884E5821DD5094D00994BC5 /* Profile Tab */,
-				1884E57B1DD5027500994BC5 /* User Authentication */,
 				1884E57D1DD5029200994BC5 /* Helper Classes */,
+				18269BC61DD212400065D028 /* Main.storyboard */,
+				1884E57A1DD3B61F00994BC5 /* SYA2_Moments.entitlements */,
 				18269BCB1DD212400065D028 /* LaunchScreen.storyboard */,
 				18269BC91DD212400065D028 /* Assets.xcassets */,
 				18269BCE1DD212400065D028 /* Info.plist */,
