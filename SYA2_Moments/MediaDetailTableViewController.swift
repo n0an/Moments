@@ -11,10 +11,13 @@ import Firebase
 
 class MediaDetailTableViewController: UITableViewController {
 
+    // MARK: - PROPERTIES
     var media: Media!
     var currentUser: User!
     var comments = [Comment]()
     
+    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +34,7 @@ class MediaDetailTableViewController: UITableViewController {
         self.fetchComments()
     }
     
-    
+    // MARK: - HELPER METHODS
     func fetchComments() {
         media.observeNewComment { (comment) in
             if !self.comments.contains(comment) {
@@ -41,7 +44,12 @@ class MediaDetailTableViewController: UITableViewController {
         }
     }
     
-    // NAVIGATION
+    // MARK: - ACTIONS
+    @IBAction func commentDidTap() {
+        self.performSegue(withIdentifier: Storyboard.showCommentComposer, sender: media)
+    }
+    
+    // MARK: - NAVIGATION
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Storyboard.showCommentComposer {
             let commentComposer = segue.destination as! CommentComposerViewController
@@ -51,16 +59,8 @@ class MediaDetailTableViewController: UITableViewController {
         }
     }
 
-    // ACTIONS
-    @IBAction func commentDidTap() {
-        self.performSegue(withIdentifier: Storyboard.showCommentComposer, sender: media)
-    }
-    
-
-}
-
-
-extension MediaDetailTableViewController {
+  
+    // MARK: - UITableViewDataSource
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -91,6 +91,7 @@ extension MediaDetailTableViewController {
         
     }
     
+    // MARK: - UITableViewDelegate
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.mediaHeaderCell) as! MediaHeaderCell
         

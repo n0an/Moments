@@ -68,7 +68,7 @@ class Message {
     
     
     
-    // MARK: - HELPER METHODS
+    // MARK: - SAVE METHODS
     
     func save() {
         self.ref.setValue(toDictionary())

@@ -41,13 +41,10 @@ class MediaTableViewCell: UITableViewCell {
     
     func updateUI() {
         
-        
-        
         self.mediaImageView.image = nil
         
         let mediaImageKey = "\(media.uid)-mediaImage"
 
-        
         if let image = cache?.object(forKey: mediaImageKey) as? UIImage {
             self.mediaImageView.image = image
         } else {

@@ -11,10 +11,11 @@ import Firebase
 
 class LoginViewController: UITableViewController {
     
+    // MARK: - OUTLETS
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,7 +25,17 @@ class LoginViewController: UITableViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
     }
+    
+    // MARK: - HELPER METHODS
+    func showAlert(title: String, message: String, buttonTitle: String) {
+        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: buttonTitle, style: .default, handler: nil)
+        alertVC.addAction(action)
+        present(alertVC, animated: true, completion: nil)
+    }
 
+    
+    // MARK: - ACTIONS
     @IBAction func actionLoginDIdTap() {
         
         if emailTextField.text != "" && (passwordTextField.text?.characters.count)! > 6 {
@@ -39,19 +50,7 @@ class LoginViewController: UITableViewController {
                 }
             })
         }
-
-        
     }
-    
-    func showAlert(title: String, message: String, buttonTitle: String) {
-        let alertVC = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: buttonTitle, style: .default, handler: nil)
-        alertVC.addAction(action)
-        present(alertVC, animated: true, completion: nil)
-    }
-    
-    
-    
     
     
     @IBAction func actionBackDidTap(_ sender: Any) {
@@ -61,7 +60,7 @@ class LoginViewController: UITableViewController {
     
 }
 
-
+// MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

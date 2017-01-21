@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SAMCache
 
 class CommentTableViewCell: UITableViewCell {
 
@@ -20,17 +21,35 @@ class CommentTableViewCell: UITableViewCell {
         }
     }
 
+    var cache = SAMCache.shared()
     
     func updateUI() {
         
         profileImageView.image = UIImage(named: "icon-default")
         
-        comment.from.downloadProfilePicture { [weak self] (image, error) in
-            
-            self?.profileImageView.image = image
-            
-        }
         
+        let headerImageKey = "\(comment.from.uid)-headerImage"
+
+        if let image = cache?.object(forKey: headerImageKey) as? UIImage {
+            
+            self.profileImageView.image = image
+            
+        } else {
+            
+            comment.from.downloadProfilePicture { [weak self] (image, error) in
+                if let image = image {
+                    self?.profileImageView.image = image
+                    
+                    // caching profile image
+                    self?.cache?.setObject(image, forKey: headerImageKey)
+                    
+                } else if error != nil {
+                    print("Error occured: \(error?.localizedDescription)")
+                }
+            }
+        }
+
+      
         profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2
         profileImageView.layer.masksToBounds = true
         

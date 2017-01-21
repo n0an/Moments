@@ -11,6 +11,7 @@ import Firebase
 
 class Media {
     
+    // MARK: - PROPERTIES
     var uid: String
     let type: String // "image" or "video"
     var caption: String
@@ -20,7 +21,7 @@ class Media {
     var comments: [Comment]
     var mediaImage: UIImage!
     
-    
+    // MARK: - INITIALIZERS
     init(type: String, caption: String, createdBy: User, image: UIImage) {
         self.type = type
         self.createdBy = createdBy
@@ -28,7 +29,6 @@ class Media {
         self.caption = caption
         
 //        createdTime = Date().timeIntervalSince1970 // number of seconds from 1970
-
         
         comments = []
         likes = []
@@ -61,8 +61,6 @@ class Media {
             }
         }
         
-        // TODO: - why Duc doesn't take comments from dictionary? And just do instead: comments = []
-        // getting Comments
         self.comments = []
         
         if let comments = dictionary["comments"] as? [String: Any] {
@@ -73,11 +71,10 @@ class Media {
                 }
             }
         }
-        
-        
     }
     
     
+    // MARK: - SAVE METHODS
     func save(completion: @escaping (Error?) -> Void) {
         let ref = DatabaseReference.media.reference().child(uid)
         ref.setValue(toDictionary())
@@ -128,7 +125,7 @@ class Media {
     
 }
 
-
+// MARK: - DOWNLOAD METHODS
 extension Media {
     
     func downloadMediaImage(completion: @escaping (UIImage?, Error?) -> Void) {
@@ -154,8 +151,6 @@ extension Media {
     
     func observeNewComment(_ completion: @escaping (Comment) -> Void) {
         
-        // .childAdded: (1) download everything for the first time, (2) download the new child added to the ref
-        
         DatabaseReference.media.reference().child("\(uid)/comments").observe(.childAdded, with: { snapshot in
         
             let comment = Comment(dictionary: snapshot.value as! [String: Any])
@@ -165,6 +160,8 @@ extension Media {
         })
     }
     
+    
+    // MARK: - LIKES METHODS
     func likedBy(user: User) {
         self.likes.append(user)
         let ref = DatabaseReference.media.reference().child("\(uid)/likes/\(user.uid)")
@@ -186,9 +183,8 @@ extension Media {
 }
 
 
-
+// MARK: - Equatable
 // COMPARE METHOD (FOR "CONTAINS" FEATURE) - for checking if array constains current User
-
 extension Media: Equatable { }
 
 func ==(lhs: Media, rhs: Media) -> Bool {

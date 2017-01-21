@@ -12,18 +12,21 @@ import Firebase
 
 class FIRImage {
     
+    // MARK: - PROPERTIES
     var image: UIImage
     var downloadURL: URL?
     var downloadLink: String!
     var ref: FIRStorageReference!
     
+    // MARK: - INITIALIZER
     init(image: UIImage) {
         self.image = image
     }
     
-    
 }
 
+
+// MARK: - UPLOAD METHODS
 extension FIRImage {
     
     func saveProfileImage(_ userUID: String, _ completion: @escaping (Error?) -> Void) {
@@ -39,7 +42,6 @@ extension FIRImage {
             
             completion(error)
         }
-        
         
     }
     
@@ -62,7 +64,7 @@ extension FIRImage {
 }
 
 
-
+// MARK: - DOWNLOAD METHODS
 extension FIRImage {
     class func downloadProfileImage(_ uid: String, completion: @escaping (UIImage?, Error?) -> Void) {
         
@@ -74,9 +76,7 @@ extension FIRImage {
             } else {
                 completion(nil, error)
             }
-            
         }
-        
     }
     
     
@@ -91,19 +91,12 @@ extension FIRImage {
             } else {
                 completion(nil, error)
             }
-            
-            
         }
-        
-        
     }
-    
-    
-    
 }
 
 
-
+// MARK: - RESIZE EXTENSION
 private extension UIImage {
     
     func resized() -> UIImage {
@@ -128,19 +121,6 @@ private extension UIImage {
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

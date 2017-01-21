@@ -10,14 +10,18 @@ import UIKit
 
 class CommentComposerViewController: UIViewController {
 
+    // MARK: - OUTLETS
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var usernameButton: UIButton!
     @IBOutlet weak var captionTextView: UITextView!
     @IBOutlet weak var postBarButtonItem: UIBarButtonItem!
 
+    // MARK: - PROPERTIES
     var currentUser: User!
     var media: Media!
+
     
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,10 +55,7 @@ class CommentComposerViewController: UIViewController {
     }
     
     
-    deinit {
-        print("CommentComposerViewController deinit")
-    }
-    
+    // MARK: - ACTIONS
     @IBAction func postDidTap() {
         
         let comment = Comment(mediaUID: media.uid, from: currentUser, caption: captionTextView.text)
@@ -70,7 +71,7 @@ class CommentComposerViewController: UIViewController {
 }
 
 
-
+// MARK: - UITextViewDelegate
 extension CommentComposerViewController: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {

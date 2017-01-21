@@ -85,7 +85,7 @@ class Chat {
 
     }
     
-    // MARK: - HELPER METHODS
+    // MARK: - SAVE METHODS
     func save() {
         
         self.ref.setValue(toDictionary())
@@ -126,9 +126,9 @@ class Chat {
     
 }
 
-// MARK: - DOWNLOAD IMAGE
 extension Chat {
     
+    // MARK: - DOWNLOAD IMAGE
     func downloadFeaturedImage(completion: @escaping (UIImage?, Error?) -> Void) {
         
         FIRImage.downloadProfileImage(self.featuredImageUID) { (image, error) in
@@ -139,7 +139,7 @@ extension Chat {
         
     }
     
-    
+    // MARK: - SEND MESSAGE
     func send(message: Message) {
         
         self.messageIds.append(message.uid)

@@ -39,7 +39,7 @@ enum DatabaseReference {
         }
     }
     
-    // MARK: - Public
+    // MARK: - Database Public API
     
     func reference() -> FIRDatabaseReference {
         return rootRef.child(path)
@@ -70,7 +70,7 @@ enum StorageReference {
         }
     }
     
-    // MARK: - Public
+    // MARK: - Storage Public API
 
     func reference() -> FIRStorageReference {
         return baseRef.child(path)

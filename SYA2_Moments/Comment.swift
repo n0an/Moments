@@ -11,6 +11,7 @@ import Firebase
 
 class Comment {
     
+    // MARK: - PROPERTIES
     var mediaUID: String
     var uid: String
     
@@ -20,6 +21,7 @@ class Comment {
     var caption: String
     var ref: FIRDatabaseReference
     
+    // MARK: - INITIALIZERS
     init(mediaUID: String, from: User, caption: String) {
         self.mediaUID = mediaUID
         self.from = from
@@ -48,16 +50,14 @@ class Comment {
         
     }
     
-    
+    // MARK: - SAVE METHODS
     func save() {
         ref.setValue(toDictionary())
     }
     
-    
     func toDictionary() -> [String: Any] {
         
         return [
-            
             "mediaUID":     mediaUID,
             "uid":          uid,
             //            "createdTime":  createdTime,
@@ -72,7 +72,7 @@ class Comment {
     
 }
 
-
+// MARK: - Equatable
 extension Comment: Equatable { }
 
 func ==(lhs: Comment, rhs: Comment) -> Bool {

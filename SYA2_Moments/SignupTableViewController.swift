@@ -11,15 +11,18 @@ import Firebase
 
 class SignupTableViewController: UITableViewController {
     
+    // MARK: - OUTLETS
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var fullNameTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    // MARK: - PROPERTIES
     var imagePickerHelper: ImagePickerHelper!
     var profileImage: UIImage!
 
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +38,7 @@ class SignupTableViewController: UITableViewController {
         
     }
     
-    
+    // MARK: - HELPER METHODS
     func showAlert(withMessage message: String) {
         let errorAlert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -45,6 +48,7 @@ class SignupTableViewController: UITableViewController {
     }
     
 
+    // MARK: - ACTIONS
     @IBAction func actionCreateNewAccountButtonTapped() {
         // create a new account
         // save the user data, take photo
@@ -106,14 +110,7 @@ class SignupTableViewController: UITableViewController {
             }
         })
         
-//        if emailTextField.text != ""
-//            && (passwordTextField.text?.characters.count)! > 6
-//            && (userNameTextField.text?.characters.count)! > 6
-//            && fullNameTextField.text != ""
-//            && profileImage != nil {
-//            
-//            
-//        }
+
         
     }
     
@@ -133,6 +130,7 @@ class SignupTableViewController: UITableViewController {
 }
 
 
+// MARK: - UITextFieldDelegate
 extension SignupTableViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {

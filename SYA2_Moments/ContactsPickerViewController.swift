@@ -59,8 +59,6 @@ class ContactsPickerViewController: UITableViewController {
     
     // MARK: - HELPER METHODS
     
-    
-    
     func fetchUsers() {
         
         let accountsRef = DatabaseReference.users(uid: currentUser.uid).reference().child("follows")

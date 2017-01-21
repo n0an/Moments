@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 
+// MARK: - PUBLIC STRUCT
 public struct Storyboard {
     static let showWelcome = "ShowWelcomeViewController"
     static let postComposerNVC = "PostComposerNavigationVC"

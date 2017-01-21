@@ -161,18 +161,6 @@ extension User {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // COMPARE METHOD (FOR "CONTAINS" FEATURE) - for checking if array constains current User
 
 extension User: Equatable { }
