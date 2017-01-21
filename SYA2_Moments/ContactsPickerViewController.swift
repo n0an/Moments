@@ -12,7 +12,6 @@ import VENTokenField
 
 class ContactsPickerViewController: UITableViewController {
     
-    
     struct Storyboard {
         static let contactCell = "ContactCell"
         static let segueShowChatViewController = "ShowChatViewController"
@@ -41,21 +40,7 @@ class ContactsPickerViewController: UITableViewController {
 
         tableView.estimatedRowHeight = tableView.rowHeight
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        
-        // Setting currentUser
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        
-        // TODO: - try this, or appDelegate.window!.rootViewController
-        let tabBarController = UIApplication.shared.keyWindow?.rootViewController as! UITabBarController
-        
-        let firstNavVC = tabBarController.viewControllers?.first as! UINavigationController
-        
-        let newsFeedTVC = firstNavVC.topViewController as! NewsfeedTableViewController
-        
-        self.currentUser = newsFeedTVC.currentUser
-        
-        
+  
         // Setting Contacts Picker Field
         
         contactsPickerField.placeholderText = "Search ..."

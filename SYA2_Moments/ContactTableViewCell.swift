@@ -56,11 +56,11 @@ class ContactTableViewCell: UITableViewCell {
             self.profileImageView.image = cachedImage
         } else {
             
-            user.downloadProfilePicture { (image, error) in
+            user.downloadProfilePicture { [weak self] (image, error) in
                 
-                self.profileImageView.image = image
+                self?.profileImageView.image = image
                 
-                self.cache?.setImage(image, forKey: profileImageCacheKey)
+                self?.cache?.setObject(image, forKey: profileImageCacheKey)
                 
             }
             

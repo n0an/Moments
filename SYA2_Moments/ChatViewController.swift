@@ -30,7 +30,7 @@ class ChatViewController: JSQMessagesViewController {
     
     var jsqMessages = [JSQMessage]()
     
-    // TODO: TRY TO USE THIS SOLUTION IN QUICK CHAT
+    
     var outgouingBubbleImageView: JSQMessagesBubbleImage!
     var incomingBubbleImageView: JSQMessagesBubbleImage!
     

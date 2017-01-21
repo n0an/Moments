@@ -40,6 +40,9 @@ class MediaTableViewCell: UITableViewCell {
     weak var delegate: MediaTableViewCellDelegate?
     
     func updateUI() {
+        
+        
+        
         self.mediaImageView.image = nil
         
         let mediaImageKey = "\(media.uid)-mediaImage"

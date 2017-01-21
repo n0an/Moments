@@ -27,13 +27,15 @@ class CommentTableViewCell: UITableViewCell {
         
         comment.from.downloadProfilePicture { [weak self] (image, error) in
             
-            if let image = image {
-                
-                self?.profileImageView.image = image
-                
-            } else {
-                print("Error occured: \(error?.localizedDescription)")
-            }
+            self?.profileImageView.image = image
+            
+//            if let image = image {
+//                
+//                self?.profileImageView.image = image
+//                
+//            } else {
+//                print("Error occured: \(error?.localizedDescription)")
+//            }
         }
         
         profileImageView.layer.cornerRadius = profileImageView.bounds.width / 2

@@ -43,11 +43,11 @@ class ChatTableViewCell: UITableViewCell {
             self.featuredImageView.image = cachedImage
         } else {
             
-            self.chat.downloadFeaturedImage { (image, error) in
+            self.chat.downloadFeaturedImage { [weak self] (image, error) in
                 
-                self.featuredImageView.image = image
+                self?.featuredImageView.image = image
                 
-                self.cache?.setImage(image, forKey: featuredImageCacheKey)
+                self?.cache?.setObject(image, forKey: featuredImageCacheKey)
              
             }
         

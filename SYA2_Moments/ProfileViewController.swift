@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import SAMCache
 
 class ProfileViewController: UITableViewController {
 
@@ -17,12 +18,32 @@ class ProfileViewController: UITableViewController {
         
     }
 
+    func clearAllViewControllersWithLogout() {
+        
+        let tabBarController = UIApplication.shared.keyWindow?.rootViewController as! UITabBarController
+        
+        let newsFeedNavVC = tabBarController.viewControllers?[0] as! UINavigationController
+        let newsFeedVC = newsFeedNavVC.topViewController as! NewsfeedTableViewController
+        
+        let recentChatsNavVC = tabBarController.viewControllers?[2] as! UINavigationController
+        let recentChatsVC = recentChatsNavVC.topViewController as! RecentChatsViewController
+        
+        newsFeedVC.userSignedOut()
+        recentChatsVC.userSignedOut()
+        
+        SAMCache.shared().removeAllObjects()
+        
+        
+    }
     
     @IBAction func actionLogOutDidTap(_ sender: Any) {
         
         try! FIRAuth.auth()?.signOut()
         
+        self.clearAllViewControllersWithLogout()
+        
         self.tabBarController?.selectedIndex = 0
+        
         
     }
 

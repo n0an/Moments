@@ -27,11 +27,12 @@ public struct Storyboard {
 
 class NewsfeedTableViewController: UITableViewController {
     
+    // MARK: - PROPERTIES
     var imagePickerHelper: ImagePickerHelper!
     var currentUser: User?
     var medias = [Media]()
     
-    
+    // MARK: - viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,10 +64,9 @@ class NewsfeedTableViewController: UITableViewController {
     }
     
     
-    
+    // MARK: - HELPER METHODS
     func fetchMedia() {
         
-        self.medias = []
         Media.observeNewMedia { (media) in
     
             if !self.medias.contains(media) {
@@ -76,6 +76,15 @@ class NewsfeedTableViewController: UITableViewController {
         }
         
     }
+    
+    func userSignedOut() {
+        self.currentUser = nil
+        self.medias.removeAll()
+        self.tableView.reloadData()
+        
+        
+    }
+
     
     
     // NAVIGATION
@@ -137,20 +146,7 @@ extension NewsfeedTableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.mediaHeaderCell) as! MediaHeaderCell
-        
-        cell.currentUser = currentUser
-        cell.media = medias[section]
-        
-        cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        
-        return cell
-    }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return Storyboard.mediaHeaderHeight
-    }
     
 }
 
@@ -166,11 +162,27 @@ extension NewsfeedTableViewController {
         
         
     }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Storyboard.mediaHeaderCell) as! MediaHeaderCell
+        
+        cell.currentUser = currentUser
+        cell.media = medias[section]
+        
+        cell.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return Storyboard.mediaHeaderHeight
+    }
 }
 
 
 
 
+// MARK: - UITabBarControllerDelegate
 
 extension NewsfeedTableViewController: UITabBarControllerDelegate {
     
@@ -200,6 +212,7 @@ extension NewsfeedTableViewController: UITabBarControllerDelegate {
 }
 
 
+// MARK: - === MediaTableViewCellDelegate ===
 
 extension NewsfeedTableViewController: MediaTableViewCellDelegate {
     

@@ -50,6 +50,11 @@ class CommentComposerViewController: UIViewController {
         usernameButton.setTitle(currentUser.username, for: [])
     }
     
+    
+    deinit {
+        print("CommentComposerViewController deinit")
+    }
+    
     @IBAction func postDidTap() {
         
         let comment = Comment(mediaUID: media.uid, from: currentUser, caption: captionTextView.text)

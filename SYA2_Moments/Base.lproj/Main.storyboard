@@ -12,6 +12,7 @@
     </dependencies>
     <customFonts key="customFonts">
         <array key="AvenirNext.ttc">
+            <string>AvenirNext-Medium</string>
             <string>AvenirNext-Regular</string>
         </array>
     </customFonts>
@@ -630,13 +631,13 @@
         <!--Messages-->
         <scene sceneID="KXY-XA-BvH">
             <objects>
-                <tableViewController id="qfh-UF-9S9" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="P6s-Q0-y06">
+                <tableViewController id="qfh-UF-9S9" customClass="RecentChatsViewController" customModule="SYA2_Moments" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="65" sectionHeaderHeight="28" sectionFooterHeight="28" id="P6s-Q0-y06">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="65" id="CwR-72-dH1" customClass="ChatTableViewCell" customModule="SYA2_Moments" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ChatCell" rowHeight="65" id="CwR-72-dH1" customClass="ChatTableViewCell" customModule="SYA2_Moments" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="65"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CwR-72-dH1" id="EgC-By-6RO">
@@ -692,10 +693,13 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="2HJ-VZ-DgT">
                             <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="WTj-8I-paO" kind="show" id="AAs-bM-t1g"/>
+                                <segue destination="WTj-8I-paO" kind="show" identifier="ShowContactsViewController" id="AAs-bM-t1g"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="AwW-ZF-7sk" kind="show" identifier="ShowChatViewController" id="2p8-BQ-CqM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aH8-Fr-2uH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1044,6 +1048,9 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PiW-jz-cj7">
                                             <rect key="frame" x="299" y="14" width="68" height="28"/>
                                             <state key="normal" title="   Follow   "/>
+                                            <connections>
+                                                <action selector="followDidTap" destination="Z3I-CK-jqB" eventType="touchUpInside" id="xkq-Xh-0qC"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                     <constraints>
@@ -1258,11 +1265,7 @@
                             <outlet property="delegate" destination="MPj-g1-wqs" id="IIy-bk-ILf"/>
                         </connections>
                     </tableView>
-                    <toolbarItems>
-                        <barButtonItem image="icon-like" id="EX6-m4-7Wj">
-                            <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                        </barButtonItem>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Moments" id="y8q-TW-38N"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -1286,7 +1289,7 @@
                         <viewControllerLayoutGuide type="bottom" id="1PF-yy-AV7"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="ENx-5J-Vfk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="t9" translatesAutoresizingMaskIntoConstraints="NO" id="4VX-n4-bDn">
@@ -1305,7 +1308,7 @@
                                 </state>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="3Yg-9l-xse">
-                                <rect key="frame" x="60" y="118" width="299" height="630"/>
+                                <rect key="frame" x="60" y="118" width="299" height="730"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
@@ -1651,6 +1654,7 @@
         <image name="t9" width="370" height="370"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ure-Rk-197"/>
+        <segue reference="2p8-BQ-CqM"/>
+        <segue reference="Wkj-2I-8tq"/>
     </inferredMetricsTieBreakers>
 </document>

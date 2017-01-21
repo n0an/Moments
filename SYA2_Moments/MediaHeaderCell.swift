@@ -35,8 +35,6 @@ class MediaHeaderCell: UITableViewCell {
         let headerImageKey = "\(media.createdBy.uid)-headerImage"
 
         
-//        if let image = cache?.object(forKey: "\(self.media.createdBy.uid)-headerImage") as? UIImage {
-        
         if let image = cache?.object(forKey: headerImageKey) as? UIImage {
 
             self.profileImageView.image = image
@@ -48,9 +46,7 @@ class MediaHeaderCell: UITableViewCell {
                     self?.profileImageView.image = image
                     
                     // caching profile image
-                    // TODO: comment about need add ! unwrap
-//                    self?.cache?.setObject(image, forKey: "\((self?.media.createdBy.uid)!)-headerImage")
-                    self?.cache?.setImage(image, forKey: headerImageKey)
+                    self?.cache?.setObject(image, forKey: headerImageKey)
                     
                 } else if error != nil {
                     print("Error occured: \(error?.localizedDescription)")
@@ -86,8 +82,7 @@ class MediaHeaderCell: UITableViewCell {
         currentUser.follow(user: media.createdBy)
         media.createdBy.isFollowedBy(user: currentUser)
         
-        followButton.isHidden = true
-        // TODO: Use code from Duc here, add media.createdBy.isFollowedBy(currentUser)
+        self.updateUI()
 
     
     }
